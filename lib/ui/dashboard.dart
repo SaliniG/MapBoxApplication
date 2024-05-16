@@ -11,7 +11,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Container(),
     );
   }
 }
