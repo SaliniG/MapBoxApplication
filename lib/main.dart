@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:map_box_application/ui/dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,14 +7,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Map',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: const Dashboard(),
     );
   }
 }
