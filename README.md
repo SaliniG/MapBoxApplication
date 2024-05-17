@@ -44,17 +44,11 @@ Extend marker functionality to support animated GIFs. When a user taps on the ma
 
 This project is a starting point for a Flutter application.
 
-Install application
-Open the app
-Allow location permission
-Shows current location of the device
-Can add multiple marker
-draw height along with the marker
-gif animation supported in the marker
+# Install application
+# Open the app
+# Allow location permission
+# Shows current location of the device
+# Can add multiple marker
+# draw height along with the marker
+# gif animation supported in the marker
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
