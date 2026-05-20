@@ -37,17 +37,8 @@ class MapState {
   }
 
   double get totalDistanceKm {
-    const calc = Distance();
-    // When a road route exists, sum along the actual polyline for road distance
-    if (routePoints.length >= 2) {
-      double total = 0;
-      for (int i = 0; i < routePoints.length - 1; i++) {
-        total += calc.as(LengthUnit.Kilometer, routePoints[i], routePoints[i + 1]);
-      }
-      return total;
-    }
-    // Fall back to straight-line distance between markers
     if (markers.length < 2) return 0;
+    const calc = Distance();
     double total = 0;
     for (int i = 0; i < markers.length - 1; i++) {
       total += calc.as(LengthUnit.Kilometer, markers[i], markers[i + 1]);
