@@ -244,7 +244,13 @@ class _MapScreenState extends State<MapScreen> {
           floatingActionButton: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _fab(heroTag: 'theme',    icon: isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded, onTap: () => MyApp.of(context).toggleTheme(), small: true),
+              _fab(heroTag: 'theme',    icon: isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded, onTap: () {
+                final goingDark = !MyApp.of(context).isDark;
+                MyApp.of(context).toggleTheme();
+                context.read<MapBloc>().add(TileUrlChanged(
+                  goingDark ? AppConstants.mapBoxDarkUrl : AppConstants.mapBoxIntegrationUrl,
+                ));
+              }, small: true),
               _gap,
               _fab(heroTag: 'style',   icon: Icons.layers_rounded,   onTap: () => _showStylePicker(context, state), small: true),
               _gap,
