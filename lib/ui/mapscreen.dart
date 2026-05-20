@@ -210,7 +210,7 @@ class _MapScreenState extends State<MapScreen> {
                   child: _pill(
                     color: Colors.black87,
                     icon: Icons.straighten_rounded,
-                    label: '${state.totalDistanceKm.toStringAsFixed(2)} km',
+                    label: _formatDistance(state.totalDistanceKm),
                   ),
                 ),
 
@@ -449,6 +449,12 @@ class _MapScreenState extends State<MapScreen> {
         ),
       ),
     );
+  }
+
+  String _formatDistance(double km) {
+    if (km < 1) return '${(km * 1000).round()} m';
+    if (km < 10) return '${km.toStringAsFixed(1)} km';
+    return '${km.round()} km';
   }
 
   Widget _infoRow(IconData icon, String label, String value) {
