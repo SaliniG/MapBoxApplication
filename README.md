@@ -1,54 +1,110 @@
-# map_box_application
+# MapBox Application
 
-Displays a full-screen Mapbox map using any style map:
+A Flutter map application built with [flutter_map](https://pub.dev/packages/flutter_map) and Mapbox tile styles. The app provides an interactive map experience with real-time GPS tracking, search, road routing, and a clean BLoC-driven state architecture.
 
-Utilize the Mapbox Flutter plugin to render a full-screen interactive map. Choose any Mapbox style (e.g., streets, satellite) to customize the map's appearance.
-Main Dart file code that initializes the Mapbox map:
+---
 
-Created a Flutter application that initializes a Mapbox map by setting up the necessary access token and configuring the initial camera position. This code ensures the map loads when the app starts.
-Add a static marker at a predefined location on the map:
+## Features
 
-Use the addSymbol method to place a static marker at a specific latitude and longitude on the map. Customize the marker's icon as needed.
-Draw a line:
+### Map & Navigation
+- **Interactive map** — tap anywhere to drop a GIF-animated marker
+- **GPS location** — automatically centers the map on your current position at launch
+- **Zoom controls** — dedicated zoom in / zoom out buttons on the right panel
+- **Compass** — resets the map bearing to north with a single tap
 
-Use the addLine method to draw a line on the map between predefined points. This can be used to represent routes or boundaries.
-A highlighted area:
+### Map Styles
+Switch between four Mapbox tile styles instantly:
+- Custom Style (default)
+- Streets
+- Satellite
+- Outdoors
 
-Use the addFill method to highlight a polygonal area on the map. This is useful for emphasizing regions such as parks, zones, or specific areas of interest.
-Directional arrows on the map:
+### Markers & Drawing
+- **Tap to add markers** — each tap places an animated GIF marker at that coordinate
+- **Polyline** — a blue line connects all placed markers in order
+- **Polygon** — a filled purple polygon is drawn over all placed points
+- **Undo** — removes the last placed marker
+- **Clear all** — removes every marker, the polyline, and the polygon in one tap
 
+### Distance
+- **Live km badge** — shows the total straight-line distance across all markers, updated after every tap
 
-Implement an onMapClick listener that allows users to tap on the map to place a marker at the tapped location. This feature enhances interactivity and user engagement.
-Allowing the user to draw lines on the map through user interaction:
+### Search & Geocoding
+- **Search bar** — type an address or place name to search
+- **Autocomplete suggestions** — up to 5 results appear as you type (500 ms debounce) powered by the free Nominatim API
+- **Tap to navigate** — selecting a suggestion moves the camera to that location instantly
 
-Capture multiple tap events and dynamically draw a line based on the collected points. This allows users to create custom paths or routes directly on the map.
-Allowing the user to highlight areas on the map through user interaction:
+### Road Routing
+- **Road route toggle** — when enabled, the app fetches a real driving route between markers using the free OSRM API
+- The route polyline snaps to actual roads and updates as new markers are added
 
-Capture user-defined polygon points through multiple taps and use these points to draw and highlight areas on the map. This feature allows users to define and visualize custom areas.
-Allowing the user to add arrows directly on the map through user interaction:
+### Dark Mode
+- Full dark / light theme toggle via a button in the right panel
+- All FABs, badges, and UI surfaces adapt to the current theme
 
-Similar to adding markers, this feature allows users to place directional arrows by tapping on the map. Use custom arrow icons to represent these symbols.
-Allow users to place GIF markers on the map by tapping:
+### Share Location
+- Share your current GPS coordinates via the device share sheet
 
-Extend marker functionality to support animated GIFs. When a user taps on the map, place a marker with a GIF icon, enhancing visual appeal and providing dynamic content.
+---
 
+## Architecture
 
+```
+lib/
+├── bloc/
+│   ├── map_event.dart   # All user actions (tap, undo, clear, route toggle …)
+│   ├── map_state.dart   # Immutable state (markers, routePoints, tileUrl …)
+│   └── map_bloc.dart    # Business logic + OSRM route fetching
+├── ui/
+│   └── mapscreen.dart   # Single screen: map layers, FABs, search bar
+└── utils/
+    ├── constants.dart       # Mapbox style URLs
+    ├── secrets.dart         # Mapbox token — gitignored, never committed
+    └── secrets.example.dart # Template for local setup
+```
 
+State is managed with **flutter_bloc**. The map always starts clean — no markers or routes are persisted between sessions.
 
-
-
-
-
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
+- Flutter SDK
+- A Mapbox public access token
 
-# Install application
-# Open the app
-# Allow location permission
-# Shows current location of the device
-# Can add multiple marker
-# draw height along with the marker
-# gif animation supported in the marker
+### Setup
 
+1. Clone the repository
+   ```bash
+   git clone https://github.com/SaliniG/MapBoxApplication.git
+   cd MapBoxApplication
+   ```
+
+2. Create your secrets file
+   ```bash
+   cp lib/utils/secrets.example.dart lib/utils/secrets.dart
+   ```
+   Open `lib/utils/secrets.dart` and replace `YOUR_MAPBOX_PUBLIC_TOKEN` with your actual token from [mapbox.com](https://mapbox.com).
+
+3. Install dependencies
+   ```bash
+   flutter pub get
+   ```
+
+4. Run the app
+   ```bash
+   flutter run
+   ```
+
+5. Allow location permission when prompted — the map will center on your current position.
+
+---
+
+## APIs Used
+
+| API | Purpose | Key required |
+|-----|---------|--------------|
+| Mapbox Styles | Map tile rendering | Yes (public token) |
+| Nominatim (OSM) | Address search & autocomplete | No |
+| OSRM | Driving route calculation | No |
