@@ -33,7 +33,7 @@ class MyAppState extends State<MyApp> {
     return BlocProvider(
       create: (_) => MapBloc(),
       child: MaterialApp(
-        title: 'Map',
+        title: 'WayMapper',
         theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.light),
         darkTheme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
         themeMode: _themeMode,

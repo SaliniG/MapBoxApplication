@@ -1,4 +1,4 @@
-# MapBox Application
+# WayMapper
 
 A Flutter map application built with [flutter_map](https://pub.dev/packages/flutter_map) and Mapbox tile styles. The app provides an interactive map experience with real-time GPS tracking, search, road routing, and a clean BLoC-driven state architecture.
 
