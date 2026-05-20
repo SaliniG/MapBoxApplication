@@ -6,32 +6,13 @@ A Flutter map application built with [flutter_map](https://pub.dev/packages/flut
 
 ## Screenshots
 
-<table>
-  <tr>
-    <td align="center"><b>Single Marker</b></td>
-    <td align="center"><b>Multiple Markers & Polygon</b></td>
-    <td align="center"><b>Road Routing</b></td>
-    <td align="center"><b>Search Autocomplete</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/01_single_marker.png" width="200"/></td>
-    <td><img src="screenshots/02_markers_polygon.png" width="200"/></td>
-    <td><img src="screenshots/03_road_routing.png" width="200"/></td>
-    <td><img src="screenshots/04_search.png" width="200"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Dark Mode</b></td>
-    <td align="center"><b>Share Location</b></td>
-    <td align="center"><b>Route + Polygon</b></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/05_dark_mode.png" width="200"/></td>
-    <td><img src="screenshots/06_share.png" width="200"/></td>
-    <td><img src="screenshots/07_route_polygon.png" width="200"/></td>
-    <td></td>
-  </tr>
-</table>
+| Single Marker | Multiple Markers | Road Routing | Search |
+|:---:|:---:|:---:|:---:|
+| ![](screenshots/01_single_marker.png) | ![](screenshots/02_markers_polygon.png) | ![](screenshots/03_road_routing.png) | ![](screenshots/04_search.png) |
+
+| Dark Mode | Share Location | Route + Polygon |
+|:---:|:---:|:---:|
+| ![](screenshots/05_dark_mode.png) | ![](screenshots/06_share.png) | ![](screenshots/07_route_polygon.png) |
 
 ---
 
